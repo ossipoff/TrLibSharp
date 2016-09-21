@@ -1,0 +1,280 @@
+
+*
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+the labels administrated by manger.tab may NOT contain '_'
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+the manager contains the folowing types of table:
+#geoid   manager   777
+#dtmtab  manager   776   p.t. empty
+#dhtab   manager   775
+#upltab  manager   774
+#demtab  manager   773   p.t. empty
+#tabtab  manager   772
+#bagtab  manager   771
+#t3dtab  manager   770
+#t2dtab  manager   769   p.t. empty
+#tddtab  manager   768
+#stop    manager         empty mandatory
+;
+
+#managertab
+
+#geoid   manager   777
+
+REC_TABLE
+dvr90g2013.01  2  0  4  3  dvr90  geo_euref89  "DK2013/1    0.01x0.016666 dg"
+dvr90g2002.01  2  0  4  3  dvr90  geo_euref89  "DK2002/1    1.5x3.0 nt"
+dnn50g98.01    2  0  4  3  dnn    geo_euref89  "DK98/1    1.5x3.0 nt"
+fe95g.01       2  0  4  3  msl    geo_euref89  "Faroes    1.5x3.0 nt"
+fogeoid10.01   2  0  4  3  fvr09  geo_euref89  "Faroes    18x36 sx"
+fogeoid11.01   2  0  4  3  fvr09  geo_etrs89   "Faroes    18x36 sx"
+fogeoid12.01   2  0  4  3  fvr09  geo_etrs89   "Faroes    18x36 sx"
+fogeoid12.02   2  0  4  3  fvr09  geo_etrs89   "Faroes    18x36 sx"
+ee98g.01       2  0  4  3  ee1940  geo_eeref89  "Estonia   1.5x3.0 nt"
+nkg2004g.01    2  0  4  3  msl    geo_euref89  "NKG2004/1   1.2x2.4 nt"
+gr2000g.06     2  0  4  3  msl    geo_gr96     "Greenland 3.0x6.0 nt"
+fehmarngeoid10.bin  2   0  4  3  fcsvr10  geo_feh10    "Fehmarn geoid 2010 0.6x1.0 nt"
+fbeltgeoid.bin  2   0  4  3  dhhn92  geo_detrs89    "Fbelt geoid dhhn92 1x1.5 nt"
+egm96g.01      2  1  4  1  msl    geo_wgs84    "EGM96  0.5x0.5dg  1 m"
+nkg96g.01      1  0  4  3  msl    geo_euref89  "NKG89     0.1x0.2 dg"
+fogeoid10.bin  2  0  4  3  msl    geo_euref89  "Faroes    3.0x6.0 nt"
+dk89g.01       1  0  4  3  msl    geo_euref89  "DK89x     3.0x6.0 nt"
+bal95g.01      1  0  4  3  msl    geo_wgs84  "Temp Balt 4x5 nt(see nkg96g.01)"
+vj96g.01       1  0  4  3  dvr90  geo_euref89  "Vestjylland special"
+gr2000g.01     2  0  4  3  msl    geo_wgs84    "Greenland 3.0x6.0 nt"
+gre96g.01      2  0  4  3  msl    geo_wgs84    "Greenland 5.0x10.0 nt ver 2"
+gre94g.01      1  0  4  3  msl    geo_wgs84    "Greenland 5.0x10.0 nt"
+nkg96g.01      2  0  4  3  msl    geo_euref89  "NKG96/1   1.5x3.0 nt"
+stop
+
+*
+name       COM GLO size hdtm  proj     "descr"
+            PL BAL   dec
+dma84g.b1    1  1  1  0  202  geo_wgs84  "DMA84  0.5x0.5dg  1.0 m"
+;
+
+* list of tables of precedenses (STD is mandatory);
+
+STD  DK  FO  GL  EE
+
+* STD is mandatory precedense of geoids
+  region (ex. DK) show precedence of geoids when opened with region;
+
+STD
+dvr90g2013.01
+fogeoid12.02
+ee98g.01
+nkg2004g.01
+gr2000g.06
+egm96g.01
+stop
+
+DK
+dvr90g2013.01
+nkg2004g.01
+egm96g.01
+stop
+
+FO
+fogeoid12.02
+egm96g.01
+stop
+
+GL
+gr2000g.06
+egm96g.01
+stop
+
+EE
+ee98g.01
+nkg2004g.01
+egm96g.01
+stop
+
+* STD is all stdgeoids
+  national prefix gives the national geoid until global 
+;
+
+
+
+#upltab  manager   774
+
+REC_TABLE
+nkgrf03app.01  2  0  -4  5  nkgvrf03  geo_euref89  "NKG REF2003 upl. app.  5x10 nt"
+stop
+
+*
+name       COM GLO size hdtm  proj     "descr"
+            PL BAL   dec
+;
+
+* list of tables of precedenses (STD is mandatory);
+
+STD  DK
+
+STD
+nkgrf03app.01
+stop
+
+DK
+nkgrf03app.01
+stop
+
+
+
+#dhtab   manager   775
+
+REC_TABLE
+dhdnndvr.01    2   0   4   3  dnn      s34j       "DVR90 - DNN50 5x5km"
+dhfvr09oldmsl.12  2  0   4   3  fvr09  geo_etrs89   "MSL - FVR09 18x36 sx"
+dhdhhn92fcsvr.10  2   0   4   3  fcsvr10  geo_feh10  "DHHN92 - FCSVR10 1x1.5 nt"
+dhgmdvr.01     2   0   4   3  gm91     s34j       "DVR90 - DNN50 5x5km"
+dhdnn50.01     2   0   4   3  gi50     s34j       "DNN50 NY-GL 200x200m"
+stop
+
+*
+name       COM GLO size hdtm  proj     "descr"
+            PL BAL   dec
+;
+
+* list of tables of precedenses (STD is mandatory);
+
+STD  DK  FO  DE
+
+* STD is mandatory precedense of geoids
+  region (ex. DK) show precedence of geoids when opened with region;
+
+STD
+dhdnndvr.01
+dhfvr09oldmsl.12
+dhgmdvr.01
+dhdnn50.01
+stop
+
+DK
+dhdnndvr.01
+dhgmdvr.01
+dhdnn50.01
+stop
+
+FO
+dhfvr09oldmsl.12
+stop
+
+DE
+dhdhhn92fcsvr.10
+stop
+
+
+#bagtab   manager   771
+
+REC_TABLE
+stop
+
+*
+name       COM GLO size hdtm  proj     "descr"
+            PL BAL   dec
+;
+
+* list of tables of precedenses (STD is mandatory);
+
+STD  DK
+
+* STD is mandatory precedense of geoids
+  region (ex. DK) show precedence of geoids when opened with region;
+
+STD
+stop
+
+DK
+stop
+
+
+#t3dtab   manager   770
+
+REC_TABLE
+nadggr96.06    2  0  4  3  msl       geo_nad83g  "GL nad83g corr to geoNgr96"
+nkgrf03vel.01  2  0  4  3  nkgvrf03  geo_itrf00  "NKG 2003 vel  5 x 10 sx "
+stop
+
+*
+name       COM GLO size hdtm  proj     "descr"
+            PL BAL   dec
+;
+
+* list of tables of precedenses (STD is mandatory);
+
+STD  DK
+
+* STD is mandatory precedense of geoids
+  region (ex. DK) show precedence of geoids when opened with region;
+
+STD
+nadggr96.06
+nkgrf03vel.01
+stop
+
+DK
+nadggr96.06
+nkgrf03vel.01
+stop
+
+GL
+nadggr96.06
+stop
+
+
+#t2dtab   manager   769
+
+REC_TABLE
+stop
+
+*
+name       COM GLO size hdtm  proj     "descr"
+            PL BAL   dec
+;
+
+* list of tables of precedenses (STD is mandatory);
+
+STD  GL
+
+* STD is mandatory precedense of geoids
+  region (ex. DK) show precedence of geoids when opened with region;
+
+STD
+stop
+
+GL
+stop
+
+
+#tddtab   manager   768
+
+REC_TABLE
+grsoek.06   2  0  8  2  msl  crt2acl  "GL SOEK pix to utm24_gr96"
+stop
+
+*
+name       COM GLO size hdtm  proj     "descr"
+            PL BAL   dec
+;
+
+* list of tables of precedenses (STD is mandatory);
+
+STD  GL
+
+* STD is mandatory precedense of geoids
+  region (ex. DK) show precedence of geoids when opened with region;
+
+
+STD
+grsoek.06
+stop
+
+GL
+grsoek.06
+stop
+
+#stop    manager 
+

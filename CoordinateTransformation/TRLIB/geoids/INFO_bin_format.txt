@@ -1,0 +1,52 @@
+
+Binary format of geoid tables
+
+
+The table is interpolated bilinearly.
+
+
+The text (0:3) descibes bytes 0:3
+
+
+
+The binary tables are formated:
+
+Header (0:63)
+Table (64:length_of_table+63)
+
+
+Header::
+f777 (0:3)   int    :: table type, 777 == geoids
+BL   (4:51)  double :: Bmin, Bmax, Lmin, Lmax, dB, dL
+                   B:: latitude, L:: longitude (unit = degree)
+ezf  (52:63) int    :: datum, cstm, mode
+               datum:: 4 == etrs89 
+                cstm:: 0 == geographical
+                mode:: 0 when geographical
+
+rec_p_bl        = 16;
+n_max           = (int) ((Bmax - Bmin) / dB + 1.1);
+e_max           = (int) ((Lmax - Lmin) / dL + 1.1);
+estop           = ((e_max + rec_p_bl -1) / rec_p_bl) * rec_p_bl;
+blk_size        = rec_p_bl * sizeof(float); // (== 64)
+row_size        = estop / rec_p_bl * blk_size;
+length_of_table = n_max * row_size;
+
+Organisation of Table::
+Rows decreasing from Bmax to Bmin
+
+Organisation of Row(i) {i|0:(n_max-1)} ::
+values on latitude (B_max -(i*dB)) increasing from Lmin to Lmax.
+
+NB: the last elements of each row float(e_max:e_stop-1) is fill == 9999.99f;
+
+NB: blk_size is depending on the table type::
+    2-dim transf.: blk_size = rec_p_bl *2* sizeof(float); // (== 128)
+                   binary elements:: (dN, dE)
+    3-dim transf.: blk_size = rec_p_bl *3* sizeof(float); // (== 192)
+                   binary elements:: (dN, dE, dH)
+    2-dim double:  blk_size = rec_p_bl *2* sizeof(double); // (== 256)
+                   binary elements:: (dN, dE)
+
+NB: in some tables is datum, cstm and mode differently coded than above.
+    This means that the datum and projections is different from geo_etrs89

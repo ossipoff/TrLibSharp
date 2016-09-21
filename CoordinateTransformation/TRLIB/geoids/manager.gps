@@ -1,0 +1,1126 @@
+
+*
+
+DISCLAIMER
+
+KMS can not be held responsible for any unauthorised change of
+this textfile. Any change may cause eroneous transformation or
+projection calculation and in wost case the transformation or
+projection routines may have a break.
+KMS can not be held responsible for misuse of the content of this
+file or the functions using this file.
+
+
+the manager contains the folowing types of table:
+#linktab  manager   878     links to itrfyy from various systems
+#igstab   manager   877     must hold same no of entries as itrftab
+#itrftab  manager   876     must hold same no of entries as igstab
+#etrftab  manager   875
+#nnr_nuvel1a  manager   874
+#stop     manager           empty mandatory
+
+linktab :
+each entry have the format:
+ <sys>_itrfyy
+ id text line, realisation_date  to_date
+ id text line
+ link_date  dx     dy     dz   dscale    drx      dry      drz
+           dx/Y   dy/Y   dz/Y  dscale/Y  drx/Y    dry/Y    drz/Y
+
+igstab and itrftab : the entries must be ordered by year(xx) of ITRFxx. 
+each entry have the format:
+ itrfyy_itrfyy
+ id text line, from_date  to_date
+ id text line
+ date       dx     dy     dz   dscale    drx      dry      drz
+           dx/Y   dy/Y   dz/Y  dscale/Y  drx/Y    dry/Y    drz/Y
+
+ UNITS:            cm           ppb             mas
+                cm/YEAR      ppb/YEAR        mas/YEAR
+
+
+plmtab : the entries must be ordered by PLate name. 
+each entry have the format:
+ xxxx                          // xxxx = PLate name
+ id text line, from_date  to_date
+ id text line
+ date       drx/Y    dry/Y    drz/Y
+
+ UNITS:     pRAD/YEAR (=RAD*1.0e-9/YEAR) (p == pico)
+
+ NOTE   at least 2 spaces are requested between two values.
+;
+
+#managergps
+
+#linktab  manager   878
+
+REC_TABLE
+
+DK_etrf89_itrf00
+ITR00  (itrf00 -> euref89) , 19940915  29990101
+NKG determined transformations to DK, NO, SV, SF
+20031001  -3.31   55.84   2.24  -10.91   16.732    11.308   -18.998
+*Rotations are inverse due to use of transposed rotation matrix;
+            .00     .00    .00     .0      .0000     .0000     .0000
+
+NO_etrf89_itrf00
+ITR00  (itrf00 -> euref89) , 19940831  29990101
+NKG determined transformations to DK, NO, SV, SF
+20031001  -5.36  -11.10  -4.58    8.31   -3.099    10.295    -8.912
+*Rotations are inverse due to use of transposed rotation matrix;
+            .00     .00    .00     .0      .0000     .0000     .0000
+
+SE_etrf89_itrf00
+ITR00  (itrf00 -> euref89) , 19990702  29990101
+NKG determined transformations to DK, NO, SV, SF
+20031001   3.44    3.03  -6.79    0.08    2.134     7.765    -9.810
+*Rotations are inverse due to use of transposed rotation matrix;
+            .00     .00    .00     .0      .0000     .0000     .0000
+
+FI_etrf89_itrf00
+ITR00  (itrf00 -> euref89) , 19970101  29990101
+NKG determined transformations to DK, NO, SV, SF
+20031001  11.15   -7.78  -13.81   9.84   -0.700     4.710    -8.091
+*Rotations are inverse due to use of transposed rotation matrix;
+            .00     .00    .00     .0      .0000     .0000     .0000
+
+GR_gr96_itrf94
+ITR94  (itrf94 -> gr96) , 19960815  29990101
+Greenland datum 1996 def in ITRF94
+19960815   0.0     0.0   -0.0     0.0   0.0      0.0       0.0
+            .0      .0     .0      .0    .0       .0        .0
+
+wgs84_itrf90
+ITR90  (itrf90 -> wgs84) , 19880101  29990101
+IGSMAIL-5447. Weighted transf. of the 60 IGS(IGS) stations
+19880101  6.0  -51.7  -22.3   -0.011    18.3    -0.3      7.0
+          0.0    0.0    0.0    0.000     0.00    0.0      0.0
+
+* Drev: K:/refframes/IGS/IGS05Mails.doc 2-2) søjle;
+igs05_itrf05
+ITR05  (igs05 -> itrf05) , 20000101  29990101
+IGSMAIL-5447. Weighted transf. of the 60 IGS(IGS) stations
+20000101  0.165  -0.016  0.236  -1.85533  -0.01118  -0.00693  -0.00046
+          0.000   0.000  0.000   0.00000   0.00000   0.00000   0.00000
+
+*
+igs00_itrf00
+ITR00  (igs00 -> itrf00) , 20000101  29990101
+IGSMAIL-5447. Weighted transf. of the 60 IGS(IGS) stations
+20000101  0.165  -0.016  0.236  -1.85533  -0.02043  -0.00693  -0.00046
+          0.000   0.000  0.000   0.00000   0.00000   0.00000   0.00000
+;
+
+stop
+
+* UNITS:          cm           ppb             mas
+                cm/YEAR      ppb/YEAR        mas/YEAR
+;
+
+#igstab  manager   877
+
+REC_TABLE
+
+igs88_igs89
+ITR89  (igs88 -> igs89), 19910101   19920101
+IERS TN 21 (1996 IERS Conventions), Table 3.1, p.12,
+19880101     .5    3.6    2.4   -3.1    -.1       .00     .00
+             .00    .00    .00    .00    .00      .00     .00
+
+igs89_igs90
+ITR90  (igs89 -> igs90), 19920101   19930101
+IERS TN 21 (1996 IERS Conventions), Table 3.1, p.12,
+19880101    -.5   -2.4    3.8   -3.4     .00      .00     .00
+             .00    .00    .00    .00    .00      .00     .00
+
+igs90_igs91
+ITR91  (igs90 -> igs91), 19930101   19940101
+IERS TN 21 (1996 IERS Conventions), Table 3.1, p.12,
+19880101     .2     .4    1.6    -.3     .00      .00     .00
+             .00    .00    .00    .00    .00      .00     .00
+
+igs91_igs92
+ITR92  (igs91 -> igs92), 19940101   19950101
+IERS TN 21 (1996 IERS Conventions), Table 3.1, p.12,
+19880101   -1.2   -1.4     .6   -1.4     .00      .00     .00
+             .00    .00    .00    .00    .00      .00     .00
+
+igs92_igs93
+ITR93  (igs92 -> igs93), 19950101   19960629
+AC report(IGS Comb), IGS A.R., Tab. 9,
+19950101   -2.     -.8    -.3     .1    -1.66    -.68    -.55
+            -.23   -.04    .08   -.11    -.12    -.15     .04
+
+igs93_igs94
+ITR94  (igs93 -> igs94) , 19960630   19980228
+AC Report 1999, Tab. 1. Weighted transf. of the 13 IGS stations
+19960630    2.1     .1    -.1     .2     1.27     .87     .54
+             .27    .0    -.20    .09     .13     .20    -.04
+
+igs94_igs96
+ITR96  (igs94 -> igs96) , 19980301  19990731
+AC Report 1999, Tab. 1. Weighted transf. of the 13 IGS stations
+19980301    0.0    -.1     .1    -.4     -.10    -.01    -.22
+             .02   -.09    .02   -.07    -.02     .01     .01
+
+igs96_igs97
+ITR97  (igs96 -> igs97) , 19990801  20011201
+AC Report 1999, Tab. 1. Weighted transf. of the 47 IGS stations
+19990801    0.03    .05  -1.47   1.43     .159   -.263   -.060
+            -.07    .01   -.19    .19     .013   -.015    .003
+
+igs97_igs00
+ITR00  (igs97 -> igs00) , 20011202  20061231
+IGSMAIL-3605. Weighted transf. of the 48 IGS(IGS) stations
+19980101   -0.60  -0.56   2.01  -1.403  -0.040   0.001  -0.043
+            0.04   0.08   0.15  -0.012   0.004  -0.001  -0.030
+
+
+* Drev: K:/refframes/IGS/IGS05Mails.doc 5456 ;
+igs00_igs05
+ITR05  (igs00 -> igs05) , 20070101  20110106
+IGSMAIL-5455. Weighted transf. of the 60 IGS(IGS) stations
+20000101   0.03   0.15   0.61  -0.7125   0.0070  -0.0340   0.0069
+           0.04  -0.07   0.18  -0.1748  -0.0033   0.0001   0.0161
+* tabellen er uklar igs00 -> igs05 eller igs05 -> igs00 ;
+* BENYTTET   igs05 -> igs00  (ABS to REL antenna center) ;
+
+igs05_igs08
+ITR08  (igs05 -> igs08) , 20110106  29990101
+IGSMAIL-6354. Weighted transf. of the 118 IGS(IGS) stations
+20050101   0.15   0.00   0.58  -1.04    -0.0120   0.0140   0.0140
+          -0.01   0.00  -0.01   0.01    -0.0020  -0.0030   0.0010
+
+
+
+stop
+
+
+* UNITS:          cm           ppb             mas
+                cm/YEAR      ppb/YEAR        mas/YEAR
+;
+
+
+#itrftab  manager   876
+
+REC_TABLE
+
+itrf88_itrf89
+ITR89  (itrf88 -> itrf89) , 19910101   19920101
+IERS TN 21 (1996 IERS Conventions), Table 3.1, p.12,
+19880101     .5    3.6    2.4   -3.1    -.10      .00     .00
+             .00    .00    .00    .00    .00      .00     .00
+
+itrf89_itrf90
+ITR90  (itrf89 -> itrf90) , 19920101   19930101
+IERS TN 21 (1996 IERS Conventions), Table 3.1, p.12,
+19880101    -.5   -2.4    3.8   -3.4     .00      .00     .00
+             .00    .00    .00    .00    .00      .00     .00
+
+itrf90_itrf91
+ITR91  (itrf90 -> itrf91) , 19930101   19940101
+IERS TN 21 (1996 IERS Conventions), Table 3.1, p.12,
+19880101     .2     .4    1.6    -.3     .00      .00     .00
+             .00    .00    .00    .00    .00      .00     .00
+
+itrf91_itrf92
+ITR92  (itrf91 -> itrf92) , 19940101   19950101
+IERS TN 21 (1996 IERS Conventions), Table 3.1, p.12,
+19880101   -1.2   -1.4     .6   -1.4     .00      .00     .00
+             .00    .00    .00    .00    .00      .00     .00
+
+itrf92_itrf93
+ITR93  (itrf92 -> itrf93) , 19950101   19960629
+IERS TN 32 (2003 IERS Conventions), Table 4.1, upd.09.04.10
+19880101    -.2    -.7    -.7    1.2     -.39     .80    -.96
+            -.29    .04    .08    .00    -.11    -.19     .05
+
+itrf93_itrf94
+ITR94  (itrf93 -> itrf94) , 19960630   19980228
+IERS TN 32 (2003 IERS Conventions), Table 4.1, upd.09.04.10
+19880101   -0.60    .50   1.50   -.49     .39    -.80    0.96
+             .29   -.04   -.08    .00     .11     .19    -.05
+
+itrf94_itrf96
+ITR96  (itrf94 -> itrf96) , 19980301  19990731
+IERS TN 32 (2003 IERS Conventions), Table 4.1, upd.09.04.10
+19970101   0.0     .0     .0     .0      .0      .0      .0 
+            .00    .00    .00    .00     .00     .00     .00
+
+itrf96_itrf97
+ITR97  (itrf96 -> itrf97) , 19990801  20011201
+IERS TN 32 (2003 IERS Conventions), Table 4.1, upd.09.04.10
+19970101    0.0     .0     .0     .0      .0      .0      .0 
+             .00    .00    .00    .00     .00     .00     .00
+
+itrf97_itrf00
+ITR00  (itrf97 -> itrf00) , 20011201  20061231
+IERS TN 32 (2003 IERS Conventions), Table 4.1, upd.09.04.10
+19970101  -0.67  -0.61   1.85  -1.55    0.00    0.00    0.00
+           0.00   0.06   0.14  -0.01    0.00    0.00   -0.02
+* on week 837 - 1110 : may 2001
+19970101  -0.62  -0.63   1.82  -1.33   -0.04   -0.00   -0.01
+           0.00  -0.09  -0.16  -0.067   0.004   0.009  -0.035
+;
+
+itrf00_itrf05
+ITR05  (itrf00 -> itrf05) , 20070101  29990101
+IERS TN 32 (2003 IERS Conventions), Table 4.1, upd.09.04.10
+20000101  -0.01   0.08   0.58  -0.40    0.00    0.00    0.00
+           0.02  -0.01   0.18  -0.08    0.00    0.00    0.00
+
+itrf05_itrf08
+ITR05  (itrf05 -> itrf08) , 20100101  29990101
+http://itrf.ign.fr/ITRF_solutions/2008/tp_08-05.php
+20050101   0.05   0.09   0.47  -0.94    0.00    0.00    0.00
+          -0.03   0.00   0.00   0.00    0.00    0.00    0.00
+
+stop
+
+
+
+#etrftab  manager   875
+
+REC_TABLE
+
+itrf89_etrf89
+ITR89  (itrf89 -> euref89) , 19920101   19930101
+Boucher Altamini, Memo: Specifications ... EUREF, Table 3A, table 4,
+19890101     .00    .00    .00    .00    .00      .00     .00
+             .00    .00    .00    .00    .11      .57    -.71
+
+itrf90_etrf89
+ITR90  (itrf90 -> euref89) , 19930101   19940101
+Boucher Altamini, Memo: Specifications ... EUREF, Table 3A, table 4,
+19890101    1.9    2.8   -2.3     .00    .00      .00     .00
+             .00    .00    .00    .00    .11      .57    -.71
+
+itrf91_etrf89
+ITR91  (itrf91 -> euref89) , 19940101   19950101
+Boucher Altamini, Memo: Specifications ... EUREF, Table 3A, table 4,
+19890101    2.1    2.5   -3.7     .00    .00      .00     .00
+             .00    .00    .00    .00    .21      .52    -.68
+
+itrf92_etrf89
+ITR92  (itrf92 -> euref89) , 19950101   19960629
+Boucher Altamini, Memo: Specifications ... EUREF, Table 3A, table 4,
+19890101    3.8    4.0   -3.7     .00     .00     .00     .00
+             .00    .00    .00    .00     .21      .52    -.68
+
+itrf93_etrf89
+ITR93  (itrf93 -> euref89) , 19960630   19980228
+Boucher Altamini, Memo: Specifications ... EUREF, Table 3A, table 4,
+19890101    1.9    5.3   -2.1     .00     .00     .00     .00
+             .00    .00    .00    .09     .32      .78    -.67
+
+itrf94_etrf89
+ITR94  (itrf94 -> euref89) , 19980301  19990731
+Boucher Altamini, Memo: Specifications ... EUREF, Table 3A, table 4,
+19890101    4.1    4.1   -4.9     .00     .00     .00     .00
+             .00    .00    .00    .00     .20     .50    -.65
+
+itrf96_etrf89
+ITR96  (itrf96 -> euref89) , 19990801  20011201
+Boucher Altamini, Memo: Specifications ... EUREF, Table 3A, table 4,
+19890101    4.1    4.1   -4.9     .00     .00     .00     .00
+             .00    .00    .00    .00     .20     .50    -.65
+
+itrf97_etrf89
+ITR97  (itrf97 -> euref89) , 20011201  29990101
+Boucher Altamini, Memo: Specifications ... EUREF, Table 3A, table 4,
+19890101    4.1    4.1   -4.9     .00     .00     .00     .00
+             .00    .00    .00    .00     .20     .50    -.65
+
+itrf00_etrf89
+ITR00  (itrf00 -> euref89) , 20011201  29990101
+Boucher Altamini, Memo: Specifications ... EUREF, Table 3A, table 4,
+19890101    5.4    5.1   -4.8     .00     .00     .00     .00
+             .00    .00    .00    .00     .081    .490   -.792
+
+* NOT USED due to jump in pos after change to abs antenna pos
+ref. B&A, Memo vers. 7, chapter 4.
+itrf05_etrf89
+ITR00  (itrf00 -> euref89) , 20011201  29990101
+Boucher Altamini, Memo: Specifications ... EUREF, vers. 7, Table 3A, table 4,
+19890101    5.6    4.8   -3.7     .00     .00     .00     .00
+             .00    .00    .00    .00     .054    .518   -.781
+;
+
+stop
+
+
+* ITRF2008 have new platemotions. + ITRF2000 + NUVEL1A;
+J. Geophys.Res. Vol.112, B09401, doi:10.1029/2007JB004949, 2007
+nnr_nuvel1a00  manager   874  2005   2999
+
+
+#nnr_itrf08  manager  874  2006  2999
+
+REC_TABLE
+
+*NUBI;
+afrc*1;
+Africa  20000101  20991231
+http://acc.igs.org/trf/itrf2008-plate-motion_egu11poster.pdf
+     0.407 prad    -2.986 prad     3.714 prad
+*itrf05     0.394 prad    -2.995 prad     3.594 prad
+Altamini ITRF2005,J.Geo.res.vol112,no.B09401,doi:10.1029/2007JB004949,2007.;
+*nuvel1a       .891   -3.099    3.922 ;
+
+anta*2;
+Antartica  20000101  20991231
+http://acc.igs.org/trf/itrf2008-plate-motion_egu11poster.pdf
+    -1.091 prad    -1.537 prad     3.195 prad
+*itrf05      -1.131 prad    -1.597 prad     3.364 prad;
+*itrf00      -1.107         -1.548          3.554 ;
+*nuvel1a      -.821         -1.701          3.706 ;
+
+arab*3;
+Arabia  20000101  20991231
+http://acc.igs.org/trf/itrf2008-plate-motion_egu11poster.pdf
+     6.564 prad     0.640 prad     7.767 prad
+*itrf05       6.518 prad     0.577 prad     7.700 prad;
+*nuvel1a      6.685         -0.521          6.760 ;
+
+aust*4;
+Australia  20000101  20991231
+http://acc.igs.org/trf/itrf2008-plate-motion_egu11poster.pdf
+     7.350 prad     5.701 prad     5.861 prad
+*itrf05       7.354 prad     5.616 prad     5.874 prad;
+*itrf00       0.710          5.752          5.731 ;
+*nuvel1a      7.839          5.124          6.282 ;
+
+cari*5;
+Caribbea  20000101  20991231
+http://acc.igs.org/trf/itrf2008-plate-motion_egu11poster.pdf
+    -0.155 prad    -4.659 prad     2.986 prad
+*itrf05      -0.803 prad    -3.154 prad     2.665 prad;
+*nuvel1a      -.178         -3.385          1.581 ;
+
+coco*6;
+Cocos  20000101  20991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+            -10.425  -21.605   10.925
+
+eura*7;
+Eurasia  20000101  20991231
+http://acc.igs.org/trf/itrf2008-plate-motion_egu11poster.pdf
+    -0.412 prad    -2.584 prad     3.752 prad
+*itrf05      -0.263 prad    -2.512 prad     3.791 prad;
+*itrf00       -.392         -2.375          3.847 ;
+*nuvel1a      -.981         -2.395          3.153 ;
+
+indi*8;
+India  20000101  20991231
+http://acc.igs.org/trf/itrf2008-plate-motion_egu11poster.pdf
+     5.910 prad     0.892 prad     7.481 prad
+*itrf05       6.417 prad     2.572 prad     8.188 prad;
+*nuvel1a      6.670           .040          6.790 ;
+
+noam*9;
+N. America  20000101  20991231
+http://acc.igs.org/trf/itrf2008-plate-motion_egu11poster.pdf
+     0.116 prad    -3.171 prad    -0.441 prad
+*itrf05        0.152 prad    -3.338 prad    -0.251 prad;
+*itrf00        .403          -3.349          -.297 ;
+*nuvel1a       .258          -3.599          -.153 ;
+
+nazc*10;
+Nazca  20000101  20991231
+http://acc.igs.org/trf/itrf2008-plate-motion_egu11poster.pdf
+    -1.605 prad    -7.519 prad     7.912 prad
+*itrf05      -1.569 prad    -7.752 prad     7.937 prad;
+*nuvel1a     -1.532         -8.577          9.609 ;
+
+pcfc*11;
+Pacific  20000101  20991231
+http://acc.igs.org/trf/itrf2008-plate-motion_egu11poster.pdf
+    -1.842 prad     5.081 prad   -10.598 prad
+*itrf05      -2.131 prad     5.052 prad   -10.565 prad;
+*itrf00      -1.748          4.752         -4.180 ;
+*nuvel1a     -1.510          4.840         -9.970 ;
+
+soam*12;
+S. America  20000101  20991231
+http://acc.igs.org/trf/itrf2008-plate-motion_egu11poster.pdf
+    -1.159 prad    -1.571 prad    -0.679 prad
+*itrf05      -1.290 prad    -1.557 prad    -0.610 prad;
+*itrf00      -1.290         -1.306          -.721 ;
+*nuvel1a     -1.038         -1.515          -.870 ;
+
+jufu*13;
+Juan de Fuca  20000101  20991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              5.200    8.610   -5.820
+
+phil*14;
+Philippine, 20000101  20991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             10.090   -7.160   -9.670
+
+rivr*15;
+Rivera  20000101  20991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -9.390  -30.960   12.050
+
+scot*16;
+Scotia  20000101  20991231
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.410   -2.660   -1.270
+
+amur*17;
+Amurian  20000101  20991231
+http://acc.igs.org/trf/itrf2008-plate-motion_egu11poster.pdf
+    -0.645 prad    -2.526 prad     3.995 prad
+*itrf05    -0.577 prad    -2.543 prad     3.904 prad;
+
+okho*18;
+Okhostk  20000101  20991231
+http://acc.igs.org/trf/itrf2008-plate-motion_egu11poster.pdf
+    -0.824 prad    -0.974 prad    -0.785 prad
+*itrf05    -0.836 prad    -0.899 prad    -0.769 prad;
+
+soma*19;
+Somalia  20000101  20991231
+http://acc.igs.org/trf/itrf2008-plate-motion_egu11poster.pdf
+     0.344 prad    -3.655 prad     4.354 prad
+*itrf05     0.026 prad    -3.196 prad     4.344 prad;
+
+yang*20;
+Yangtze  20000101  20991231
+http://acc.igs.org/trf/itrf2008-plate-motion_egu11poster.pdf
+    -0.848 prad    -2.618 prad     4.795 prad
+*itrf05    -0.929 prad    -2.590 prad     4.658 prad;
+
+stop
+
+
+* ITRF2005 have new platemotions. + ITRF2000 + NUVEL1A;
+J. Geophys.Res. Vol.112, B09401, doi:10.1029/2007JB004949, 2007
+nnr_nuvel1a00  manager   874  2005   2999
+
+
+#nnr_itrf05  manager  874  2006  2999
+
+REC_TABLE
+
+afrc*1;
+Africa  20000101  20991231
+Altamini ITRF2005,J.Geo.res.vol112,no.B09401,doi:10.1029/2007JB004949,2007.
+     0.394 prad    -2.995 prad     3.594 prad
+*nuvel1a       .891   -3.099    3.922 ;
+
+anta*2;
+Antartica  20000101  20991231
+Altamini ITRF2005,J.Geo.res.vol112,no.B09401,doi:10.1029/2007JB004949,2007.
+    -1.131 prad    -1.597 prad     3.364 prad
+*itrf00      -1.107   -1.548    3.554 ;
+*nuvel1a      -.821   -1.701    3.706 ;
+
+arab*3;
+Arabia  20000101  20991231
+Altamini ITRF2005,J.Geo.res.vol112,no.B09401,doi:10.1029/2007JB004949,2007.
+     6.518 prad     0.577 prad     7.700 prad
+*nuvel1a      6.685   -0.521    6.760 ;
+
+aust*4;
+Australia  20000101  20991231
+Altamini ITRF2005,J.Geo.res.vol112,no.B09401,doi:10.1029/2007JB004949,2007.
+     7.354 prad     5.616 prad     5.874 prad
+*itrf00       0.710    5.752    5.731 ;
+*nuvel1a      7.839    5.124    6.282 ;
+
+cari*5;
+Caribbea  20000101  20991231
+Altamini ITRF2005,J.Geo.res.vol112,no.B09401,doi:10.1029/2007JB004949,2007.
+    -0.803 prad    -3.154 prad     2.665 prad
+*nuvel1a      -.178   -3.385    1.581 ;
+
+coco*6;
+Cocos  20000101  20991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+            -10.425  -21.605   10.925
+
+eura*7;
+Eurasia  20000101  20991231
+Altamini ITRF2005,J.Geo.res.vol112,no.B09401,doi:10.1029/2007JB004949,2007.
+    -0.263 prad    -2.512 prad     3.791 prad
+*itrf00       -.392   -2.375    3.847 ;
+*nuvel1a      -.981   -2.395    3.153 ;
+
+indi*8;
+India  20000101  20991231
+Altamini ITRF2005,J.Geo.res.vol112,no.B09401,doi:10.1029/2007JB004949,2007.
+     6.417 prad     2.572 prad     8.188 prad
+*nuvel1a      6.670     .040    6.790 ;
+
+noam*9;
+N. America  20000101  20991231
+Altamini ITRF2005,J.Geo.res.vol112,no.B09401,doi:10.1029/2007JB004949,2007.
+     0.152 prad    -3.338 prad    -0.251 prad
+*itrf00        .403   -3.349    -.297 ;
+*nuvel1a       .258   -3.599    -.153 ;
+
+nazc*10;
+Nazca  20000101  20991231
+Altamini ITRF2005,J.Geo.res.vol112,no.B09401,doi:10.1029/2007JB004949,2007.
+    -1.569 prad    -7.752 prad     7.937 prad
+*nuvel1a     -1.532   -8.577    9.609 ;
+
+pcfc*11;
+Pacific  20000101  20991231
+Altamini ITRF2005,J.Geo.res.vol112,no.B09401,doi:10.1029/2007JB004949,2007.
+    -2.131 prad     5.052 prad   -10.565 prad
+*itrf00      -1.748    4.752   -4.180 ;
+*nuvel1a     -1.510    4.840   -9.970 ;
+
+soam*12;
+S. America  20000101  20991231
+Altamini ITRF2005,J.Geo.res.vol112,no.B09401,doi:10.1029/2007JB004949,2007.
+    -1.290 prad    -1.557 prad    -0.610 prad
+*itrf00      -1.290   -1.306    -.721 ;
+*nuvel1a     -1.038   -1.515    -.870 ;
+
+jufu*13;
+Juan de Fuca  20000101  20991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              5.200    8.610   -5.820
+
+phil*14;
+Philippine, 20000101  20991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             10.090   -7.160   -9.670
+
+rivr*15;
+Rivera  20000101  20991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -9.390  -30.960   12.050
+
+scot*16;
+Scotia  20000101  20991231
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.410   -2.660   -1.270
+
+amur*17;
+Amurian  20000101  20991231
+Altamini ITRF2005,J.Geo.res.vol112,no.B09401,doi:10.1029/2007JB004949,2007.
+    -0.577 prad    -2.543 prad     3.904 prad
+
+okho*18;
+Okhostk  20000101  20991231
+Altamini ITRF2005,J.Geo.res.vol112,no.B09401,doi:10.1029/2007JB004949,2007.
+    -0.836 prad    -0.899 prad    -0.769 prad
+
+soma*19;
+Somalia  20000101  20991231
+Altamini ITRF2005,J.Geo.res.vol112,no.B09401,doi:10.1029/2007JB004949,2007.
+     0.026 prad    -3.196 prad     4.344 prad
+
+yang*20;
+Yangtze  20000101  20991231
+Altamini ITRF2005,J.Geo.res.vol112,no.B09401,doi:10.1029/2007JB004949,2007.
+    -0.929 prad    -2.590 prad     4.658 prad
+
+stop
+
+* EURA : ITRF2000 have new platemotions. + NUVEL1A;
+* anta, aust, eura, noam, pcfc, soam ;
+
+#nnr_itrf00  manager   874  2000   2006
+
+REC_TABLE
+
+afrc
+Africa, 19990101  20070101
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .891   -3.099    3.922
+
+anta
+Antarctica, 19990101  20070101
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.107   -1.548    3.554
+*nuvel1a      -.821   -1.701    3.706 ;
+
+arab
+Arabia, 19990101  20070101
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              6.685   -0.521    6.760
+
+aust
+Australia, 19990101  20070101
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              0.710    5.752    5.731
+*nuvel1a      7.839    5.124    6.282 ;
+
+carb
+Caribbea, 19990101  20070101
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.178   -3.385    1.581
+
+coco
+Cocos, 19990101  20070101
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+            -10.425  -21.605   10.925
+
+eura
+Eurasia, 19990101  20070101
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.392   -2.375    3.847
+*nuvel1a      -.981   -2.395    3.153 ;
+
+indi
+India, 19990101  20070101
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              6.670     .040    6.790
+
+noam
+N. America, 19990101  20070101
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .403   -3.349    -.297
+*nuvel1a       .258   -3.599    -.153 ;
+
+nazc
+Nazca, 19990101  20070101
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.532   -8.577    9.609
+
+pcfc
+Pacific, 19990101  20070101
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.748    4.752   -4.180
+*nuvel1a     -1.510    4.840   -9.970 ;
+
+soam
+S. America, 19990101  20070101
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.290   -1.306    -.721
+*nuvel1a     -1.038   -1.515    -.870 ;
+
+jufu
+Juan de Fuca, 19990101  20070101
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              5.200    8.610   -5.820
+
+phil
+Philippine, 19990101  20070101
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             10.090   -7.160   -9.670
+
+rivr
+Rivera, 19990101  20070101
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -9.390  -30.960   12.050
+
+scot
+Scotia, 19990101  20070101
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.410   -2.660   -1.270
+
+sa1s
+Southam1s, 19990101  20070101
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .000     .000     .000
+
+sa2s
+Southam2s, 19990101  20070101
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .000     .000     .000
+
+stop
+
+#nnr_nuvel1a  manager   874  1994   2000
+
+REC_TABLE
+
+afrc
+Africa, 19940101  19991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .891   -3.099    3.922
+
+anta
+Antarctica, 19940101  19991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.821   -1.701    3.706
+
+arab
+Arabia, 19940101  19991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              6.685   -0.521    6.760
+
+aust
+Australia, 19940101  19991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              7.839    5.124    6.282
+
+carb
+Caribbea, 19940101  19991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.178   -3.385    1.581
+
+coco
+Cocos, 19940101  19991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+            -10.425  -21.605   10.925
+
+eura
+Eurasia, 19940101  19991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.981   -2.395    3.153
+
+indi
+India, 19940101  19991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              6.670     .040    6.790
+
+noam
+N. America, 19940101  19991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .258   -3.599    -.153
+
+nazc
+Nazca, 19940101  19991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.532   -8.577    9.609
+
+pcfc
+Pacific, 19940101  19991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.510    4.840   -9.970
+
+soam
+S. America, 19940101  19991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.038   -1.515    -.870
+
+jufu
+Juan de Fuca, 19940101  19991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              5.200    8.610   -5.820
+
+phil
+Philippine, 19940101  19991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             10.090   -7.160   -9.670
+
+rivr
+Rivera, 19940101  19991231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -9.390  -30.960   12.050
+
+scot
+Scotia, 19940101  19991231
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.410   -2.660   -1.270
+
+sa1s
+Southam1s, 19940101  19991231
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .000     .000     .000
+
+sa2s
+Southam2s, 19940101  19991231
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .000     .000     .000
+
+stop
+
+
+* EURA : nuvel1a + speed of ITRF93 (approximately) ;
+* else : nuvel1a ;
+
+#nnr_nuvel1a93  manager   874  1993   1993
+
+REC_TABLE
+
+afrc
+Africa, 19930101  19931231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .891   -3.099    3.922
+
+anta
+Antarctica, 19930101  19931231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.821   -1.701    3.706
+
+arab
+Arabia, 19930101  19931231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              6.685   -0.521    6.760
+
+aust
+Australia, 19930101  19931231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              7.839    5.124    6.282
+
+carb
+Caribbea, 19930101  19931231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.178   -3.385    1.581
+
+coco
+Cocos, 19930101  19931231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+            -10.425  -21.605   10.925
+
+eura
+Eurasia, 19930101  19931231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.551   -3.782    3.248
+*             -.981   -2.395    3.153 ;
+
+indi
+India, 19930101  19931231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              6.670     .040    6.790
+
+noam
+N. America, 19930101  19931231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .258   -3.599    -.153
+
+nazc
+Nazca, 19930101  19931231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.532   -8.577    9.609
+
+pcfc
+Pacific, 19930101  19931231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.510    4.840   -9.970
+
+soam
+S. America, 19930101  19931231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.038   -1.515    -.870
+
+jufu
+Juan de Fuca, 19930101  19931231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              5.200    8.610   -5.820
+
+phil
+Philippine, 19930101  19931231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             10.090   -7.160   -9.670
+
+rivr
+Rivera, 19930101  19931231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -9.390  -30.960   12.050
+
+scot
+Scotia, 19930101  19931231
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.410   -2.660   -1.270
+
+sa1s
+Southam1s, 19930101  19931231
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .000     .000     .000
+
+sa2s
+Southam2s, 19930101  19931231
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .000     .000     .000
+
+stop
+
+#nnr_nuvel1   manager   874  1991   1992
+
+REC_TABLE
+
+afrc
+Africa, 19910101  19921231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .91    -3.19     4.05
+
+anta
+Antarctica, 19910101  19921231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.87    -1.78     3.89
+
+arab
+Arabia, 19910101  19921231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              6.98    -0.54     7.05 
+
+aust
+Australia, 19910101  19921231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              8.26     5.39     6.60 
+
+carb
+Caribbea, 19910101  19921231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.19    -3.47     1.62 
+
+coco
+Cocos, 19910101  19921231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+            -10.93   -22.58    11.43 
+
+eura
+Eurasia, 19910101  19921231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.01    -2.46     3.25 
+
+indi
+India, 19910101  19921231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              6.98      .05     7.10 
+
+noam
+N. America, 19910101  19921231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .26    -3.82     -.17 
+
+nazc
+Nazca, 19910101  19921231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.62    -9.01    10.09 
+
+pcfc
+Pacific, 19910101  19921231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.59     5.06   -10.42 
+
+soam
+S. America, 19910101  19921231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.08    -1.55     -.91 
+
+jufu
+Juan de Fuca, 19910101  19921231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              5.24     8.41    -5.13 
+
+phil
+Philippine, 19910101  19921231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             10.33    -7.70   -10.44 
+
+rivr
+Rivera, 19910101  19921231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .00      .00      .00 
+
+scot
+Scotia, 19910101  19921231
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .00      .00      .00 
+
+sa1s
+Southam1s, 19910101  19921231
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .00      .00      .00 
+
+sa2s
+Southam2s, 19910101  19921231
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .00      .00      .00 
+
+stop
+
+
+
+* EURA : AM0-2, else : NUVEL1 ;
+
+#nnr_am02   manager   874  1989   1990
+
+REC_TABLE
+
+afrc
+Africa, 19890101  19901231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .91    -3.19     4.05
+
+anta
+Antarctica, 19890101  19901231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.87    -1.78     3.89
+
+arab
+Arabia, 19890101  19901231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              6.98    -0.54     7.05 
+
+aust
+Australia, 19890101  19901231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              8.26     5.39     6.60 
+
+carb
+Caribbea, 19890101  19901231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.19    -3.47     1.62 
+
+coco
+Cocos, 19890101  19901231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+            -10.93   -22.58    11.43 
+
+eura
+Eurasia, 19890101  19901231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              -.53    -2.76     3.44 
+
+indi
+India, 19890101  19901231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              6.98      .05     7.10 
+
+noam
+N. America, 19890101  19901231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .26    -3.82     -.17 
+
+nazc
+Nazca, 19890101  19901231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.62    -9.01    10.09 
+
+pcfc
+Pacific, 19890101  19901231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.59     5.06   -10.42 
+
+soam
+S. America, 19890101  19901231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             -1.08    -1.55     -.91 
+
+jufu
+Juan de Fuca, 19890101  19901231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+              5.24     8.41    -5.13 
+
+phil
+Philippine, 19890101  19901231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+             10.33    -7.70   -10.44 
+
+rivr
+Rivera, 19890101  19901231
+Geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .00      .00      .00 
+
+scot
+Scotia, 19890101  19901231
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .00      .00      .00 
+
+sa1s
+Southam1s, 19890101  19901231
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .00      .00      .00 
+
+sa2s
+Southam2s, 19890101  19901231
+geophys.Res.Lett. Vol.21 No.20, p.2191-2194,  1994, (1996 IERS Conv)
+               .00      .00      .00 
+
+stop
+
+#stop    manager   871
+

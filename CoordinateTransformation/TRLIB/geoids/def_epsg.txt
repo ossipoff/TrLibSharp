@@ -1,0 +1,53 @@
+# EPSG def file for TrLib - 2012-11-27
+#
+# Copyright (c) 2012, National Survey and Cadastre, Denmark
+# (Kort- og Matrikelstyrelsen), kms@kms.dk
+# 
+# Permission to use, copy, modify, and/or distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+# 
+# format:
+# code label
+#
+4326  geo_wgs84
+4230  geo_ed50
+4258  geo_etrs89
+4747  geo_gr96
+4979  geoEwgs84
+4937  geoEetrs89
+4909  geoEgr96
+3857  webmrc
+3395  mrc0_wgs84
+2196  kp2000j
+2197  kp2000sj
+2198  kp2000b
+#utm (N-hemisphere)-systems can be defined like this... start_epsg mlb end_epsg start_zone
+25828  utm_etrs89  25837  28
+3178    utm_gr96    3189    18
+23028  utm_ed50    23038  28
+32601  utm_wgs84  32660  01
+#some other systems
+4093  dktm1
+4094  dktm2
+4095  dktm3
+4096  dktm4
+#some compound systems
+4097  dktm1H_h_dvr90
+4098  dktm2H_h_dvr90
+4099  dktm3H_h_dvr90
+7416  utm32Hetrs89_h_dvr90
+7417  utm33Hetrs89_h_dvr90
+#vertical datums#
+5733   h_dnn
+5799   h_dvr90
+5317   h_fvr09
+5714   h_msl

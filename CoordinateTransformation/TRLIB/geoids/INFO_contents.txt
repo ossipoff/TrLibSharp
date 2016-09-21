@@ -1,0 +1,101 @@
+
+This catalogue contails binary (PC) files which represent a table.
+A last character 's' shows a save version.
+A .bak showns a backup version.
+
+
+The file def_lab.txt is a text file with definitions used in the label system.
+++++++++++++++++++++++++++ DO NOT CHANGE THE FILE ++++++++++++++++++++++++++++
+def_lab.txt contains the definitions:
+   - def_rgn: region names (i.e. web region_names) National prefix.
+   - def_dtm: datum definitions.
+   - def_prj: gereral and specific projection names 
+   - def_grs: Geodetic Reference System definitions
+ 
+The file def_shp.txt is a text file with references between SHAPE .prj files
+     and the minilabel system. DO NOT CHANGE. 
+
+
+The manager.tab file is a manager file for tables.
+
+The manager.gps file is a manager file for ITRF transformations.
+
+The itrf_plat.bin is a plate boundary polygon file used by plate
+velocities in ITRF transformations
+
+
+Naming strategy:
+1.dim. table: binary table:  <name>.<version>
+              text   table:  <name>.<version>x
+2.dim. table: binary table:  <name>.<version>
+              text   table:  <name>.<version>Nx or <name>.<version>x
+              text   table:  <name>.<version>Ex
+3.dim. table: binary table:  <name>.<version>
+              text   table:  <name>.<version>Nx or <name>.<version>x
+              text   table:  <name>.<version>Ex
+              text   table:  <name>.<version>Hx
+lock area table           :  <name>.lck
+    (only used in dhdnn50: kommune dh table)
+
+Table Types Names:
+Geoid           dvr90g2013.01
+                  dk89g.01
+                  fogeoid12.02
+                  gr2000g.06       // coordsys geo_gr96
+                  ee98g.01
+                  nkg2004g.01
+                  egm96g.01
+                  fehmarngeoid10.bin  // coordsys geo_feh10
+                  fbeltgeoid.bin  // coordsys geo_detrs89
+      historical  dvr90g2002.01
+      historical  fe95g.01
+      historical  dk89g.01
+      historical  dma84g.b1
+      historical  dma84g.f1
+      historical  gr2000g.01       // coordsys geo_wgs84
+      historical  gre94g.01
+      historical  gre96f.01
+      historical  nkg2002g.01
+      historical  nkg96g.01
+      historical  nkg89g.01 
+      historical  vj96g.01
+Bouguer anaoma.   dkgboug.04
+Height difference dhdnndvr.01
+                  dhdnn50.01    (kommune dH)
+                  dhfvr09oldmsl.12 (fvr09 -> oldmsl)
+                  dhdvrfcsvr.10 (dvr90->Fehmarn)
+                  dhdhhn92fcsvr.10 (DE_dhhn92->Fehmarn)
+      historical  dhgmdvr.01
+Uplift            nkgrf03app.01 (aparent NKG)
+      historical  uplov2e.ap    (aparent NKG)
+      historical  uplbifr1.ap
+      historical  upllm1.ap     (lantmäteriet)
+      historical  uplme1.ap     (Martin Ekmann)
+      historical  uplov2.ap
+      historical  uplov1.ap
+      historical  uplov1e.ap    (extended)
+3-dim transf.     nadggr96.06   (nad83g -> gr96 3D)
+                  aitken.04     (erroneous photo measurements)
+3-dim velocity    nkgrf2003.vel
+2-dim double      grsoek<sea_chart_nr>.06 (Old_dtm -> gr96)
+
+
+Text table syntax:
+#<table_name>
+    <minN> <maxN> <minE> <maxE> <Nstep> <Estep>
+#<coordinate label> * describing the table grid ;
+
+<TABLE organized: From (maxN, minE) to (maxN, maxE) in (Esteps)
+ (each line contaning max 8 values)
+ From (maxN-Nstep, minE) to (maxN-Nstep, maxE) as above
+ ...
+ To   (minN, minE) to (minN, maxE) as above >
+
+In <TABLE> each second line may be preceeded by information
+on the coordinates and index of the first table value in the line
+ <info_line> = crd_N    crd_E    row_index   col_index
+where row_index = (maxN - crd_N) / Nstep
+and   col_index = (crd_E - minE) / Estep
+This info is controled by the -h parameter in table_adm.
+
+
