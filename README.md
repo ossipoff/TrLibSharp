@@ -1,2 +1,2 @@
-# TrSharpLib
-.NET wrapper for TRLIB (see https://bitbucket.org/KMS/trlib)
+# TrLibSharp
+.NET wrapper for KMS TRLIB (https://bitbucket.org/KMS/trlib)
