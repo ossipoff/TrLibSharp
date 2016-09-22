@@ -6,6 +6,18 @@ namespace TrLibSharp
 {
   public class TrLibCoordinateTransformation : ICoordinateTransformation
   {
+    private readonly string geoidsDirectory;
+
+    public TrLibCoordinateTransformation() :
+      this(@"TRLIB/geoids")
+    {
+    }
+
+    public TrLibCoordinateTransformation(string geoidsDirectory)
+    {
+      this.geoidsDirectory = geoidsDirectory;
+    }
+
     public Point Transform(Point from, int toEpsgId)
     {
       if (!epsgIdToMiniLabelMap.ContainsKey(from.EpsgId))
@@ -31,11 +43,11 @@ namespace TrLibSharp
       TrLib.TR_Error error;
       double oX, oY, oZ;
 
-      error = TrLib.InitLibrary(@"TRLIB/geoids");
+      error = TrLib.InitLibrary(geoidsDirectory);
 
       if (error != TrLib.TR_Error.TR_OK)
       {
-        throw TR_ErrorToTrLibException(error);
+        throw new TrLibException(TrLibException.ErrorTypes.Initialization, TrLib.TR_GetLastError());
       }
 
       tr = TrLib.TR_Open(fromMiniLabel, toMiniLabel, "");
