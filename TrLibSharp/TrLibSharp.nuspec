@@ -14,4 +14,7 @@
     <copyright>Copyright 2016</copyright>
     <tags>coordinate system transformation system34 wgs84 etrs89</tags>
   </metadata>
+  <files>
+      <file src="nuget_install.ps1" target="tools/Install.ps1" />
+  </files>
 </package>
