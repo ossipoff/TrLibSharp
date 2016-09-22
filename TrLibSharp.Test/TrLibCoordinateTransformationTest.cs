@@ -42,7 +42,25 @@ namespace TrLibSharp.Test
       Assert.AreEqual(725859.521, Math.Truncate(1000 * to.X) / 1000);
       Assert.AreEqual(6176769.440, Math.Truncate(1000 * to.Y) / 1000);
       Assert.AreEqual(25832, to.EpsgId);
+    }
 
+    [TestMethod]
+    public void wgs84_to_euref89_transformation_correct_for_Vandtaarnsvej()
+    {
+      var coordinateTransformation = new TrLibCoordinateTransformation();
+
+      var from = new Point()
+      {
+        X = 12.47756,
+        Y = 55.73517,
+        EpsgId = 4326
+      };
+
+      var to = coordinateTransformation.Transform(from, 25832);
+
+      Assert.AreEqual(718319.537, Math.Truncate(1000 * to.X) / 1000);
+      Assert.AreEqual(6182083.673, Math.Truncate(1000 * to.Y) / 1000);
+      Assert.AreEqual(25832, to.EpsgId);
     }
   }
 }

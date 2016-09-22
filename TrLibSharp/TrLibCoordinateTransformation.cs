@@ -21,6 +21,12 @@ namespace TrLibSharp
       var fromMiniLabel = epsgIdToMiniLabelMap[from.EpsgId];
       var toMiniLabel = epsgIdToMiniLabelMap[toEpsgId];
 
+      if (fromMiniLabel.StartsWith("geo"))
+      {
+        from.X = DegToRad(from.X);
+        from.Y = DegToRad(from.Y);
+      }
+
       IntPtr tr = IntPtr.Zero;
       TrLib.TR_Error error;
       double oX, oY, oZ;
@@ -54,6 +60,13 @@ namespace TrLibSharp
         throw TR_ErrorToTrLibException(error);
       }
 
+      if (toMiniLabel.StartsWith("geo"))
+      {
+        oX = RadToDeg(oX);
+        oY = RadToDeg(oY);
+        oZ = RadToDeg(oZ);
+      }
+
       Point to = new Point()
       {
         X = oX,
@@ -82,9 +95,20 @@ namespace TrLibSharp
 
     private static Dictionary<int, string> epsgIdToMiniLabelMap = new Dictionary<int, string>()
     {
+      { 4326, "geo_wgs84" },
       { 25832, "utm32_etrs89" },
       { 34005, "s34s" }
     };
+
+    private static double DegToRad(double angle)
+    {
+      return Math.PI * angle / 180.0;
+    }
+
+    private static double RadToDeg(double angle)
+    {
+      return angle * (180.0 / Math.PI);
+    }
   }
 
   class TrLibException : Exception
