@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>TrLibSharp</title>
+    <authors>ossipoff</authors>
+    <owners>ossipoff</owners>
+    <licenseUrl>https://github.com/ossipoff/TrLibSharp/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/ossipoff/TrLibSharp</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>.NET wrapper for KMS TRLIB coordinate transformation library</description>
+    <releaseNotes>Initial package.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>coordinate system transformation system34 wgs84 etrs89</tags>
+  </metadata>
+  <files>
+      <file src="TRLIB\**\*" target="content\TRLIB" />
+  </files>
+</package>
