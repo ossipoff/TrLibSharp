@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/ossipoff/TrLibSharp</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>.NET wrapper for KMS TRLIB coordinate transformation library</description>
-    <releaseNotes>Initial package.</releaseNotes>
+    <releaseNotes></releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>coordinate system transformation system34 wgs84 etrs89</tags>
   </metadata>

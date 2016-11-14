@@ -47,14 +47,21 @@ namespace TrLibSharp
 
       if (error != TrLib.TR_Error.TR_OK)
       {
-        throw new TrLibException(TrLibException.ErrorTypes.Initialization, TrLib.TR_GetLastError());
+        //In some situations TrLib will report a TR_TRANSFORMATION_ERROR on initialization
+        //even though the library is able to perform transformations just fine.
+        //Haven't been able to find out what causes the situation, but a workaround is to continue if the error code is zero
+        var errorCode = TrLib.TR_GetLastError();
+        if (errorCode != 0)
+        {
+          throw new TrLibException(TrLibException.ErrorTypes.Initialization, errorCode);
+        }
       }
 
       tr = TrLib.TR_Open(fromMiniLabel, toMiniLabel, "");
 
       if (tr == IntPtr.Zero)
       {
-        throw new TrLibException(TrLibException.ErrorTypes.Initialization, TrLib.TR_GetLastError());
+        throw new TrLibException(TrLibException.ErrorTypes.Open, TrLib.TR_GetLastError());
       }
 
       try
@@ -128,6 +135,7 @@ namespace TrLibSharp
     public enum ErrorTypes
     {
       Initialization,
+      Open,
       Allocation,
       Transformation,
       Label
@@ -147,6 +155,7 @@ namespace TrLibSharp
     private static Dictionary<ErrorTypes, string> messageErrorTypeMap = new Dictionary<ErrorTypes, string>()
     {
       { ErrorTypes.Initialization, "TRLIB was unable to initialize" },
+      { ErrorTypes.Open, "TRLIB was unable to open" },
       { ErrorTypes.Allocation, "TRLIB encountered a memory allocation error" },
       { ErrorTypes.Transformation, "TRLIB encountered an error during transformation" },
       { ErrorTypes.Label, "TRLIB does not recognize input or output label" }
